@@ -27,6 +27,7 @@
 		<constructor-arg ref="sqlSessionFactory" name="sqlSessionFactory" />
 	</bean>
 
+		<context:component-scan base-package="org.seoil.example.DAO" />
 </beans>
  
 

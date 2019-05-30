@@ -10,6 +10,8 @@ public class MemberVO {
 	private Date regDate;
 	private Date updatedDate;
 
+
+
 	public String getUserId() {
 		return userId;
 	}

@@ -2,6 +2,8 @@ package org.seoil.service;
 
 import java.util.List;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -68,4 +70,29 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(String uid) throws Exception {
 		userDAO.deleteUser(uid);
 	}
+	
+	
+	 @Override
+	    public boolean loginCheck(UserVO vo, HttpSession session) {
+	        boolean result = userDAO.loginCheck(vo);
+	        if (result) { 
+	        	UserVO vo2 = viewMember(vo);
+	            session.setAttribute("userId", vo2.getUid());
+	            session.setAttribute("userName", vo2.getName());
+	        } 
+	        return result;
+	    }
+	 @Override
+	    public boolean idCheck(UserVO vo, HttpSession session) {
+	        boolean result = userDAO.idCheck(vo);
+	        if (result) { 
+	        	
+	         
+	        } 
+	        return result;
+	    }
+	 @Override
+	    public UserVO viewMember(UserVO vo) {
+	        return userDAO.viewMember(vo);
+	    }
 }

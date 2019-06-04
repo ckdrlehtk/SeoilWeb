@@ -61,4 +61,22 @@ public class UserDAOImpl implements UserDAO {
 	public int deleteUser(String uid) throws Exception {
 		return sqlSession.delete("org.seoil.controller.userMapper.deleteUser", uid);
 	}
+	
+	 @Override
+	    public boolean loginCheck(UserVO vo) {
+	        String name = sqlSession.selectOne("org.seoil.controller.userMapper.loginCheck", vo);
+	        return (name == null) ? false : true;
+	    }
+	 @Override
+	    public boolean idCheck(UserVO vo) {
+	        String uid = sqlSession.selectOne("org.seoil.controller.userMapper.idCheck", vo);
+	        return (uid == null) ? false : true;
+	    }
+	
+	 
+	 @Override
+	    public UserVO viewMember(UserVO vo) {
+	        return sqlSession.selectOne("org.seoil.controller.userMapper.viewMember", vo);
+	    }
+	
 }

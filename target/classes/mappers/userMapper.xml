@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.seoil.controller.userMapper">
+
 	<select id="getUserInfo"
 		resultType="org.seoil.example.VO.UserVO"> SELECT UID , NAME , PWD , EMAIL , GRADE , REG_DT FROM
 		TBL_USER WHERE UID = #{uid} </select>
@@ -30,7 +31,6 @@
 		VALUES ( #{uid} , #{pwd} , #{name} , #{area} , #{phone} , #{email} , now() )
 		 </insert>
 		
-	
 		
 		
 	<update id="updateUser"
@@ -38,5 +38,28 @@
 		EMAIL = #{email} , GRADE = #{grade} WHERE UID = #{uid} </update>
 	<delete id="deleteUser" parameterType="int"> DELETE FROM TBL_USER
 		WHERE UID = #{uid} </delete>
+		
+		
+		
+	 <select id="loginCheck" resultType="String">
+        SELECT NAME as name FROM tuser
+        WHERE id = #{uid} AND pass = #{pwd}
+    </select>
+    
+     <select id="idCheck" resultType="String">
+         SELECT NAME as uid FROM tuser
+        WHERE id = #{uid}
+    </select>
+    
+    <select id="viewMember" resultType="org.seoil.example.VO.UserVO">
+        SELECT 
+            NAME AS name,
+            ID AS uid,
+            EMAIL AS email,
+            REGISTER_DATE AS reg_dt
+        FROM tuser
+       WHERE id = #{uid} AND pass = #{pwd}
+    </select>
+    
 </mapper>
 

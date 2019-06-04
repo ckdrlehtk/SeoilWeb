@@ -31,6 +31,9 @@
 		<context:component-scan base-package="org.seoil.example.DAO" />
 		<context:component-scan base-package="org.seoil.controller" />
 		<context:component-scan base-package="org.seoil.service" />
+		<context:component-scan base-package="org.seoil.example.DAO" />
+		<context:component-scan base-package="org.seoil.controller.userMapper" />
+	
 </beans>
  
 

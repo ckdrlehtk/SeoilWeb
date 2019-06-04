@@ -34,5 +34,23 @@ public class BoarderController {
 		model.addAttribute("userVO", new UserVO());
 		return "signupForm";
 	}
+	
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginForm(Model model) throws Exception {
+		model.addAttribute("userVO", new UserVO());
+		return "loginForm";
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String homeForm(Model model) throws Exception {
+		model.addAttribute("userVO", new UserVO());
+		return "home";
+	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String homeForm2(Model model) throws Exception {
+		model.addAttribute("userVO", new UserVO());
+		return "home";
+	}
 
 }
